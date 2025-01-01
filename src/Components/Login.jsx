@@ -4,7 +4,8 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
-import toast from "react-hot-toast"; // Importing react-hot-toast
+import toast from "react-hot-toast";
+
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -38,7 +39,7 @@ const Login = () => {
         console.log("Token stored in cookies");
 
         // Show toast notification
-        toast.success("Login successful! Redirecting...");
+        toast.success("Login successful!");
         console.log(toast)
 
         // Redirect to home page
