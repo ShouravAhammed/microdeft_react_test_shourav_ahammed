@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
+import toast from "react-hot-toast"; // Importing react-hot-toast
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -36,13 +37,21 @@ const Login = () => {
         Cookies.set("token", token, { expires: 7, secure: true });
         console.log("Token stored in cookies");
 
+        // Show toast notification
+        toast.success("Login successful! Redirecting...");
+        console.log(toast)
+
         // Redirect to home page
-        navigate("/");
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
       } else {
         console.warn("Token not found in response.");
+        toast.error("Login failed! Token not found.");
       }
     } catch (error) {
       console.error("Error logging in", error.response?.data);
+      toast.error("Login failed! Please check your credentials.");
     }
   };
 
